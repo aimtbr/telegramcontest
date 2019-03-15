@@ -2,36 +2,45 @@ import * as action from './actions';
 
 const sendLoading = () => ({type: action.MAKE_LOADING});
 const sendFailure = message => ({type: action.MAKE_FAILURE, error: message});
-const switchMode = dayMode => ({type: action.SWITCH_MODE, payload: {dayMode: !dayMode}});
-const changeRangeSUCCESS = range => ({
-    type: action.CHANGE_RANGE_SUCCESS, payload: {rangeToShow: range}
+const switchMode = dayMode => ({type: action.SWITCH_MODE, payload: {dayMode: !dayMode}}); //TODO IMPLEMENT
+
+const changeRangeSUCCESS = (chartTitle, range) => ({
+    type: action.CHANGE_RANGE_SUCCESS, chartTitle, payload: range
 });
 const switchSeriesSUCCESS = series => ({
     type: action.SWITCH_SERIES_SUCCESS, payload: {disabledSeries: series}
 });
-// const changeAxesSUCCESS = (x, y) => ({
-//     type: action.CHANGE_AXES, payload: {axisX: x, axisY: y}
-// });
-const getDataSUCCESS = data => ({type: action.GET_DATA_SUCCESS, payload: {charts: data}});
+const getDataSUCCESS = data => ({
+    type: action.GET_DATA_SUCCESS, payload: {charts: data}
+});
 
-export function changeRange(dispatch, range) {
+export function changeRange(dispatch, chartTitle, range, axisX, lines) {
+    let rng = {};
+    const dateValues = [];
+    for (let date of range) {
+        dateValues.push(axisX[date]);
+    }
+    for (let line in lines) {
+        let lineValues = dateValues.map(val => lines[line][val]);
+        rng = {...rng, [line]: lineValues}
+    }
+    let [step, axes] = formatAxesInput({...rng, 'x': range});
+    let rangeToShow = {step, range: range, lines: rng, axes};
+    dispatch(changeRangeSUCCESS(chartTitle, rangeToShow))
 }
 
 export function getData(dispatch) {
     dispatch(sendLoading());
-    fetch('chart_data.json', {
-        method: "get",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(response => {
-            return response.json()
+    fetch('chart_data.json',
+        {
+            method: "get",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         })
-        .then(data => {
-            return formatData(data)
-        })
+        .then(response => response.json())
+        .then(data => formatData(data))
         .then(formattedData => {
             dispatch(getDataSUCCESS(formattedData))
         })
@@ -41,21 +50,30 @@ export function getData(dispatch) {
 }
 
 function formatData(data) {
-    let charts = {};
+    const charts = [];
     for (let key in data) {
         let currentChart = data[key];
         let chartTitle = `chart${+key + 1}`;
-        let columns = {};
-        let chartCols = currentChart.columns;
-        chartCols.forEach(arr => {
-            let column = {[arr[0]]: arr.slice(1)};
-            columns = {...columns, ...column}
-        });
         let colors = currentChart.colors;
         let series_names = currentChart.names;
-        let axes = formatAxesInput(columns);
-        let chart = {[chartTitle]: {series_names, columns, axes, colors}};
-        charts = {...charts, ...chart};
+        let chartCols = currentChart.columns;
+        let columns = {};
+        let lines = {};
+        let x = {};
+        chartCols.forEach(arr => {
+            let values = arr.slice(1);
+            let column = {[arr[0]]: values};
+            if (arr[0] !== 'x') {
+                lines = {...lines, ...column};
+            } else {
+                values.map((milliSec, ind) => {
+                    let date = new Date(milliSec).toDateString().slice(4, -5);
+                    x = {...x, [date]: ind};
+                });
+            }
+        });
+        let chart = {chartTitle, series_names, x, lines, colors};
+        charts.push(chart)
     }
     return charts;
 }
@@ -81,28 +99,24 @@ export function switchSeries(dispatch, series, disabledSeries, chartTitle) { // 
 
 }
 
-// rewrite axes formatting
 function formatAxesInput(columns) {
     let columnKeys = Object.keys(columns);
     if (columnKeys.length < 2) throw new Error('Invalid input data');
-    let axes = {};
     let keysY = columnKeys.filter(key => key.indexOf('y') !== -1);
-    let firstSeries = [];
-    keysY.map(key => firstSeries = [...firstSeries, ...columns[key]]);
-    let secondSeries = columns['x'];
+    let y = [];
+    keysY.map(key => y = [...y, ...columns[key]]);
+    const x = columns['x'];
+    const xLength = x.length;
     let axisX = [];
     let axisY = [0,];
-    let markY = Math.max(...firstSeries) / 6;
+    let markY = Math.ceil(Math.max(...y) / 6) + 1;
     for (var counter = 1; counter < 6; counter++) {
         axisY.push(markY * counter);
     }
-    counter = 0;
-    let currentElement = secondSeries[counter];
-    while (currentElement !== undefined) {
-        currentElement = secondSeries[counter];
-        axisX.push(new Date(currentElement).toDateString().slice(4, -5));
-        counter += 2;
+    const step = Math.floor(xLength / 6);
+    for (counter = 0; counter < xLength; counter += step) {
+        axisX.push(x[counter]);
     }
-    axes = {axisX, axisY};
-    return axes
+    const axes = {axisX, axisY};
+    return [step, axes]
 }
