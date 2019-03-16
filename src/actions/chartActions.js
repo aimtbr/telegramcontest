@@ -2,17 +2,20 @@ import * as action from './actions';
 
 const sendLoading = () => ({type: action.MAKE_LOADING});
 const sendFailure = message => ({type: action.MAKE_FAILURE, error: message});
-const switchMode = dayMode => ({type: action.SWITCH_MODE, payload: {dayMode: !dayMode}}); //TODO IMPLEMENT
 
 const changeRangeSUCCESS = (chartTitle, range) => ({
     type: action.CHANGE_RANGE_SUCCESS, chartTitle, payload: range
 });
-const switchSeriesSUCCESS = series => ({
+const switchSeriesSUCCESS = series => ({ //TODO IMPLEMENT
     type: action.SWITCH_SERIES_SUCCESS, payload: {disabledSeries: series}
 });
 const getDataSUCCESS = data => ({
     type: action.GET_DATA_SUCCESS, payload: {charts: data}
 });
+
+export const switchMode = (dispatch, nightMode) => {
+    dispatch({type: action.SWITCH_MODE, payload: {nightMode: !nightMode}});
+};
 
 export function changeRange(dispatch, chartTitle, range, axisX, lines) {
     let rng = {};
@@ -78,7 +81,9 @@ function formatData(data) {
     return charts;
 }
 
-export function switchSeries(dispatch, series, disabledSeries, chartTitle) { // 'series' should be passed like an object
+//TODO IMPLEMENT
+export function switchLine(dispatch, series, disabledSeries, chartTitle) { // 'series' should be passed like an object
+    let active = true;
     Promise.resolve(dispatch(sendLoading()))
         .then(() => {
             let disabledSeriesTemp = {...disabledSeries};
@@ -96,7 +101,7 @@ export function switchSeries(dispatch, series, disabledSeries, chartTitle) { // 
             dispatch(switchSeriesSUCCESS(disabledSeriesTemp))
         })
         .catch(e => dispatch(sendFailure(e.message)));
-
+    return active;
 }
 
 function formatAxesInput(columns) {

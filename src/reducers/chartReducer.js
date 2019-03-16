@@ -3,7 +3,7 @@ import * as constant from "../actions/actions";
 const initialState = {
     charts: [], // consists of objects like {chartTitle, series_names, axes {axisX, axisY}, lines, rangeToShow, colors}
     disabledSeries: {},
-    dayMode: true,
+    nightMode: false,
     error: false,
     loading: false,
 };

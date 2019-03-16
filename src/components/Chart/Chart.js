@@ -1,8 +1,9 @@
 import React from 'react';
+import LineSwitcher from '../../components/LineSwitcher/LineSwitcher.js';
 
 class Chart extends React.Component {
     componentDidMount() {
-        const { chartTitle, x, lines } = this.props.chart;
+        const {chartTitle, x, lines} = this.props.chart;
         const range = ['Nov 17', 'Nov 18', 'Nov 19', 'Nov 20', 'Nov 21', 'Nov 22'];
         this.props.changeRange(chartTitle, range, x, lines);
         this.markUpChart();
@@ -21,9 +22,10 @@ class Chart extends React.Component {
         const canvWidth = canvElement.width;
         const canvHeight = canvElement.height;
         const dynamicFont = Math.round(canvWidth / 50);
-        ctx.strokeStyle = '#CCC';
+        ctx.strokeStyle = '#c5c5c5';
+        ctx.lineWidth = 0.5;
         ctx.font = `${dynamicFont}px Verdana`;
-        ctx.fillStyle = '#888';
+        ctx.fillStyle = '#9e9e9e';
         const {axisY, axisX} = this.props.chart.rangeToShow.axes;
         const pointsAreaHeight = canvHeight - idt;
         const pointsAreaWidth = canvWidth - idt;
@@ -47,23 +49,22 @@ class Chart extends React.Component {
     }
 
     drawLines(canv, height, width, idt, lineHeight, dateWidth) {
-        const { axisY } = this.props.chart.rangeToShow.axes;
-        const { lines, range, step } = this.props.chart.rangeToShow;
+        const {axisY} = this.props.chart.rangeToShow.axes;
+        const {lines, range, step} = this.props.chart.rangeToShow;
         const rangeLength = range.length;
         const widthPart = dateWidth / step;
         const heightValueToPx = lineHeight / axisY[1];
-        for (let line in lines){
+        for (let line in lines) {
             this.drawLine(canv, line, lines[line], dateWidth, heightValueToPx, rangeLength, widthPart, height, idt);
         }
     }
 
-    drawLine(...args){
+    drawLine(...args) {
         const [canv, name, line, dateWidth,
             heightValueToPx, rangeLength,
-            widthPart, height, idt ] = [...args];
+            widthPart, height, idt] = [...args];
         const ctx = canv.getContext('2d');
-        const lineColor = this.props.chart.colors[name];
-        ctx.strokeStyle = lineColor;
+        ctx.strokeStyle = this.props.chart.colors[name];
         ctx.lineWidth = 3;
         let dateInd = 1;
         let onStep = true;
@@ -77,10 +78,10 @@ class Chart extends React.Component {
             ctx.moveTo(currentPos[0], currentPos[1]);
             let x = currentPos[0];
             let y = height - heightValueToPx * line[dateInd];
-            if (!onStep){
+            if (!onStep) {
                 x += widthPart;
                 onStepCounter++;
-            }else {
+            } else {
                 x += dateWidth;
                 onStep = false;
                 onStepCounter = 0;
@@ -92,8 +93,27 @@ class Chart extends React.Component {
         ctx.stroke();
     }
 
+    placeLineSwitchers() {
+        const {chart, mode} = this.props;
+        const {chartTitle, colors, series_names} = chart;
+        const lineNames = Object.keys(series_names);
+        return lineNames
+            .map(line =>
+                <LineSwitcher key={`line-switcher-${line}`} chartTitle={chartTitle} lineName={line}
+                              lineValue={series_names[line]} mode={mode} color={colors[line]}/>
+            )
+    }
+
     render() {
-        return <canvas id={this.props.chart.chartTitle} width='700' height='400'/>
+        const {chartTitle, rangeToShow} = this.props.chart;
+        return (
+            <div className="chart-wrapper">
+                <div className="col-lg-12 col-md-12 col-sm-12">
+                    <canvas id={chartTitle} width='700' height='400'/>
+                </div>
+                {this.placeLineSwitchers()}
+            </div>
+        )
     }
 }
 
