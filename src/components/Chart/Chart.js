@@ -2,13 +2,16 @@ import React from 'react';
 import LineSwitcher from '../../components/LineSwitcher/LineSwitcher.js';
 
 class Chart extends React.Component {
-    componentDidMount() {
-        const {chartTitle, x, lines} = this.props.chart;
-        const range = ['Nov 17', 'Nov 18', 'Nov 19', 'Nov 20', 'Nov 21', 'Nov 22'];
-        this.props.changeRange(chartTitle, range, x, lines);
-        this.markUpChart();
+    constructor(props) {
+        super(props);
+        this.setDefaultRange();
+        this.redrawChart = this.redrawChart.bind(this);
     }
 
+    componentDidMount() {
+        this.markUpChart();
+    }
+//TODO DESIGN LINESWITCHER BUTTONS
     markUpChart() {
         const {chartTitle} = this.props.chart;
         const canvElement = document.getElementById(chartTitle);
@@ -67,8 +70,6 @@ class Chart extends React.Component {
         ctx.strokeStyle = this.props.chart.colors[name];
         ctx.lineWidth = 3;
         let dateInd = 1;
-        let onStep = true;
-        let onStepCounter = 0;
         const startPosX = idt + (dateWidth / 2);
         const startPosY = height - heightValueToPx * line[0];
         let currentPos = [startPosX, startPosY];
@@ -78,14 +79,7 @@ class Chart extends React.Component {
             ctx.moveTo(currentPos[0], currentPos[1]);
             let x = currentPos[0];
             let y = height - heightValueToPx * line[dateInd];
-            if (!onStep) {
-                x += widthPart;
-                onStepCounter++;
-            } else {
-                x += dateWidth;
-                onStep = false;
-                onStepCounter = 0;
-            }
+            x += widthPart;
             ctx.lineTo(x, y);
             currentPos = [x, y];
             dateInd++;
@@ -94,18 +88,34 @@ class Chart extends React.Component {
     }
 
     placeLineSwitchers() {
-        const {chart, mode} = this.props;
-        const {chartTitle, colors, series_names} = chart;
+        const {chart, mode, switchLine} = this.props;
+        const {series_names} = chart;
         const lineNames = Object.keys(series_names);
         return lineNames
             .map(line =>
-                <LineSwitcher key={`line-switcher-${line}`} chartTitle={chartTitle} lineName={line}
-                              lineValue={series_names[line]} mode={mode} color={colors[line]}/>
+                <LineSwitcher key={`line-switcher-${line}`} chart={chart} mode={mode} lineName={line}
+                              switchLine={switchLine} redrawChart={this.redrawChart}/>
             )
     }
 
+    setDefaultRange() {
+        const range = ['Nov 17', 'Nov 18', 'Nov 19', 'Nov 20', 'Nov 21', 'Nov 22',
+            'Nov 23', 'Nov 24', 'Nov 25', 'Nov 26', 'Nov 27', 'Nov 28', 'Nov 29', 'Nov 30'];
+        const {chart} = this.props;
+        const {chartTitle, x, lines} = chart;
+        this.props.changeRange(chartTitle, range, x, lines);
+    }
+
+    redrawChart() {
+        const {chartTitle} = this.props.chart;
+        const canvElement = document.getElementById(chartTitle);
+        const ctx = canvElement.getContext('2d');
+        ctx.clearRect(0,0, canvElement.width, canvElement.height);
+        this.markUpChart();
+    }
+
     render() {
-        const {chartTitle, rangeToShow} = this.props.chart;
+        const {chartTitle} = this.props.chart;
         return (
             <div className="chart-wrapper">
                 <div className="col-lg-12 col-md-12 col-sm-12">

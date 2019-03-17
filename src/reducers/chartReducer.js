@@ -1,8 +1,7 @@
 import * as constant from "../actions/actions";
 
 const initialState = {
-    charts: [], // consists of objects like {chartTitle, series_names, axes {axisX, axisY}, lines, rangeToShow, colors}
-    disabledSeries: {},
+    charts: [], // {chartTitle, series_names, axes {axisX, axisY}, lines, rangeToShow, disabled, colors}
     nightMode: false,
     error: false,
     loading: false,
@@ -29,8 +28,17 @@ export const chartReducer = (state = initialState, action) => {
             return state
         }
 
-        case constant.SWITCH_SERIES_SUCCESS: {
-            return {...state, ...action.payload, loading: false}
+        case constant.SWITCH_LINE_SUCCESS: {
+            const {charts} = state;
+            for (let chart of charts){
+                if (chart.chartTitle === action.chartTitle){
+                    const {rangeToShow, disabled} = action.payload;
+                    chart.rangeToShow = rangeToShow;
+                    chart.disabled = disabled;
+                    return {...state, charts, loading: false};
+                }
+            }
+            return state
         }
 
         case constant.SWITCH_MODE: {

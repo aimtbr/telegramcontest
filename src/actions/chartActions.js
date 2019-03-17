@@ -6,8 +6,8 @@ const sendFailure = message => ({type: action.MAKE_FAILURE, error: message});
 const changeRangeSUCCESS = (chartTitle, range) => ({
     type: action.CHANGE_RANGE_SUCCESS, chartTitle, payload: range
 });
-const switchSeriesSUCCESS = series => ({ //TODO IMPLEMENT
-    type: action.SWITCH_SERIES_SUCCESS, payload: {disabledSeries: series}
+const switchLineSUCCESS = (switched, chartTitle) => ({
+    type: action.SWITCH_LINE_SUCCESS, payload: switched, chartTitle
 });
 const getDataSUCCESS = data => ({
     type: action.GET_DATA_SUCCESS, payload: {charts: data}
@@ -20,11 +20,14 @@ export const switchMode = (dispatch, nightMode) => {
 export function changeRange(dispatch, chartTitle, range, axisX, lines) {
     let rng = {};
     const dateValues = [];
+    const rangeLength = range.length;
+    let rem = rangeLength % 6;
+    rem = rem === 0 ? rangeLength : rem;
     for (let date of range) {
         dateValues.push(axisX[date]);
     }
     for (let line in lines) {
-        let lineValues = dateValues.map(val => lines[line][val]);
+        let lineValues = dateValues.map(val => lines[line][val]).slice(0, -rem);
         rng = {...rng, [line]: lineValues}
     }
     let [step, axes] = formatAxesInput({...rng, 'x': range});
@@ -75,30 +78,39 @@ function formatData(data) {
                 });
             }
         });
-        let chart = {chartTitle, series_names, x, lines, colors};
+        let chart = {chartTitle, series_names, x, lines, colors, disabled: {}};
         charts.push(chart)
     }
     return charts;
 }
 
-//TODO IMPLEMENT
-export function switchLine(dispatch, series, disabledSeries, chartTitle) { // 'series' should be passed like an object
-    let active = true;
+export function switchLine(dispatch, chartTitle, lineName, rangeToShow, disabled) { // 'series' should be passed like an object
+    let active = false;
+    let rangeCopy = rangeToShow;
+    let disabledCopy = disabled;
     Promise.resolve(dispatch(sendLoading()))
         .then(() => {
-            let disabledSeriesTemp = {...disabledSeries};
-            if (disabledSeriesTemp[chartTitle] === undefined) {
-                disabledSeriesTemp = {...disabledSeriesTemp, [chartTitle]: {...series}};
+            const {lines} = rangeCopy;
+            const {axisX} = rangeCopy.axes;
+            const disabledCopyKeys = Object.keys(disabledCopy);
+            let lineToSwitch;
+            if (disabledCopyKeys.indexOf(lineName) !== -1) {
+                active = true;
+                lineToSwitch = {[lineName]: disabledCopy[lineName]};
+                delete disabledCopy[lineName];
+                rangeCopy.lines = {...lines, ...lineToSwitch};
             } else {
-                let key = Object.keys(series)[0];
-                disabledSeriesTemp[chartTitle].hasOwnProperty(key) ?
-                    delete disabledSeriesTemp[chartTitle][key] :
-                    disabledSeriesTemp = {
-                        ...disabledSeriesTemp,
-                        [chartTitle]: {...disabledSeriesTemp[chartTitle], ...series}
-                    }
+                const linesKeys = Object.keys(lines);
+                if (linesKeys.length === 1){
+                    active = true;
+                    return active;
+                }
+                lineToSwitch = {[lineName]: lines[lineName]};
+                delete rangeCopy.lines[lineName];
+                disabledCopy = {...disabledCopy, ...lineToSwitch};
             }
-            dispatch(switchSeriesSUCCESS(disabledSeriesTemp))
+            [, rangeCopy.axes] = formatAxesInput({...rangeCopy.lines, 'x': axisX});
+            dispatch(switchLineSUCCESS({rangeToShow: rangeCopy, disabled: disabledCopy}, chartTitle));
         })
         .catch(e => dispatch(sendFailure(e.message)));
     return active;
@@ -118,8 +130,10 @@ function formatAxesInput(columns) {
     for (var counter = 1; counter < 6; counter++) {
         axisY.push(markY * counter);
     }
-    const step = Math.floor(xLength / 6);
-    for (counter = 0; counter < xLength; counter += step) {
+    const step = Math.round(xLength / 6);
+    const rem = xLength % 6;
+    const xLengthFormatted = rem === 0 ? xLength : xLength - rem;
+    for (counter = 0; counter < xLengthFormatted; counter += step) {
         axisX.push(x[counter]);
     }
     const axes = {axisX, axisY};

@@ -4,6 +4,7 @@ import './App.css';
 import {getData} from '../../actions/chartActions';
 import {changeRange} from '../../actions/chartActions.js';
 import {switchMode} from '../../actions/chartActions.js';
+import {switchLine} from "../../actions/chartActions.js";
 import Chart from '../../components/Chart/Chart.js';
 import ModeButton from '../../components/ModeButton/ModeButton.js';
 
@@ -27,7 +28,8 @@ class App extends Component {
         return (
             <div className='container-fluid'>
                 <div className='row'>
-                    {chart && <Chart chart={chart} mode={mode} changeRange={this.props.changeRange}/>}
+                    {chart && <Chart chart={chart} mode={mode} changeRange={this.props.changeRange}
+                                     switchLine={this.props.switchLine}/>}
                     <ModeButton switchMode={this.props.switchMode} mode={mode}/>
                 </div>
             </div>
@@ -48,6 +50,8 @@ const mapDispatchToProps = dispatch => {
         changeRange: (chartTitle, range, axisX, lines) =>
             changeRange(dispatch, chartTitle, range, axisX, lines),
         switchMode: mode => switchMode(dispatch, mode),
+        switchLine: (chartTitle, lineName, rangeToShow, disabled) =>
+            switchLine(dispatch, chartTitle, lineName, rangeToShow, disabled),
     }
 };
 

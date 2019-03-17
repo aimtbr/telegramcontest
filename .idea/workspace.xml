@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d136d7ea-800e-4931-b2cb-ca9c7bdaa123" name="Default Changelist" comment="" />
+    <list default="true" id="d136d7ea-800e-4931-b2cb-ca9c7bdaa123" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/chartActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/chartActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Chart/Chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chart/Chart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LineSwitcher/LineSwitcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LineSwitcher/LineSwitcher.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/chartReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/chartReducer.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,11 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/App/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-365">
+              <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -38,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/LineSwitcher/LineSwitcher.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+              <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -46,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Chart/Chart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="102" column="30" lean-forward="true" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="30" />
+            <state relative-caret-position="221">
+              <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -59,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/ModeButton/ModeButton.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+              <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -67,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reducers/chartReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+            <state relative-caret-position="153">
+              <caret line="36" column="46" lean-forward="true" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -76,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/chartActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1267">
-              <caret line="85" column="22" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
+            <state relative-caret-position="264">
+              <caret line="131" column="5" lean-forward="true" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -85,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/chart_data.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1757">
-              <caret line="238" column="10" selection-start-line="238" selection-start-column="10" selection-end-line="238" selection-end-column="10" />
+            <state relative-caret-position="264">
+              <caret line="130" column="11" lean-forward="true" selection-start-line="130" selection-start-column="11" selection-end-line="130" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -94,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/actions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+            <state relative-caret-position="51">
+              <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -129,7 +134,6 @@
       <find>[</find>
       <find>idt</find>
       <find>formatAxesInput</find>
-      <find>axes</find>
       <find>change</find>
       <find>lines</find>
       <find>axisX</find>
@@ -137,6 +141,7 @@
       <find>color</find>
       <find>&quot;</find>
       <find>lineColor</find>
+      <find>axes</find>
     </findStrings>
     <replaceStrings>
       <replace>AXES</replace>
@@ -144,6 +149,11 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Aimtbr" />
+      </list>
+    </option>
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -157,19 +167,19 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/actions/constants.js" />
         <option value="$PROJECT_DIR$/src/data/chart_data.json" />
-        <option value="$PROJECT_DIR$/src/actions/actions.js" />
         <option value="$PROJECT_DIR$/src/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/store/index.js" />
         <option value="$PROJECT_DIR$/src/containers/Chart/Chart.js" />
         <option value="$PROJECT_DIR$/src/containers/ChartLogic/Chart.js" />
         <option value="$PROJECT_DIR$/src/containers/ChartLogic/ChartLogic.js" />
-        <option value="$PROJECT_DIR$/public/chart_data.json" />
         <option value="$PROJECT_DIR$/src/components/ModeButton/ModeButton.js" />
-        <option value="$PROJECT_DIR$/src/actions/chartActions.js" />
         <option value="$PROJECT_DIR$/src/containers/App/App.css" />
-        <option value="$PROJECT_DIR$/src/reducers/chartReducer.js" />
+        <option value="$PROJECT_DIR$/src/actions/actions.js" />
         <option value="$PROJECT_DIR$/src/containers/App/App.js" />
+        <option value="$PROJECT_DIR$/src/reducers/chartReducer.js" />
         <option value="$PROJECT_DIR$/src/components/LineSwitcher/LineSwitcher.js" />
+        <option value="$PROJECT_DIR$/public/chart_data.json" />
+        <option value="$PROJECT_DIR$/src/actions/chartActions.js" />
         <option value="$PROJECT_DIR$/src/components/Chart/Chart.js" />
       </list>
     </option>
@@ -185,7 +195,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,6 +236,13 @@
               <item name="telegramcontest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="LineSwitcher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="telegramcontest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="telegramcontest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="ModeButton" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -258,6 +274,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -307,11 +324,21 @@
       <workItem from="1552575025509" duration="16883000" />
       <workItem from="1552657239987" duration="16155000" />
       <workItem from="1552730819493" duration="18548000" />
+      <workItem from="1552780358517" duration="306000" />
+      <workItem from="1552816615242" duration="27332000" />
     </task>
+    <task id="LOCAL-00001" summary="Mode switcher and line switchers was added">
+      <created>1552780549306</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1552780549306</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120692000" />
+    <option name="totallyTimeSpent" value="148330000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -324,8 +351,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49786323" visible="true" weight="0.19288956" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49786323" visible="true" weight="0.19270833" />
       <window_info id="Structure" order="1" sideWeight="0.50213677" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -368,6 +396,52 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Mode switcher and line switchers was added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mode switcher and line switchers was added" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -402,13 +476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -419,17 +486,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/chart_data.json">
+    <entry file="file://$PROJECT_DIR$/src/actions/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1757">
-          <caret line="238" column="10" selection-start-line="238" selection-start-column="10" selection-end-line="238" selection-end-column="10" />
+        <state relative-caret-position="51">
+          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/chartActions.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/App/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1267">
-          <caret line="85" column="22" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
+        <state relative-caret-position="-365">
+          <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -440,41 +507,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/chartReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ModeButton/ModeButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/chartReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="36" column="46" lean-forward="true" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/LineSwitcher/LineSwitcher.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/App/App.js">
+    <entry file="file://$PROJECT_DIR$/public/chart_data.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="264">
+          <caret line="130" column="11" lean-forward="true" selection-start-line="130" selection-start-column="11" selection-end-line="130" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/chartActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="131" column="5" lean-forward="true" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Chart/Chart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="102" column="30" lean-forward="true" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="30" />
+        <state relative-caret-position="221">
+          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
