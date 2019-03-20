@@ -1,9 +1,18 @@
 import React from 'react';
+import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
 import LineSwitcher from '../../components/LineSwitcher/LineSwitcher.js';
 
 class Chart extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            currentValue: {min: 0, max: 7},
+        };
+        const {x} = this.props.chart;
+        const xValues = Object.values(x);
+        this.minV = Math.min(...xValues);
+        this.maxV = Math.max(...xValues);
         this.setDefaultRange();
         this.redrawChart = this.redrawChart.bind(this);
     }
@@ -11,7 +20,11 @@ class Chart extends React.Component {
     componentDidMount() {
         this.markUpChart();
     }
+
+//TODO SLIDER
 //TODO DESIGN LINESWITCHER BUTTONS
+//TODO ADD HOVER CIRCLES ON THE FOLDS
+
     markUpChart() {
         const {chartTitle} = this.props.chart;
         const canvElement = document.getElementById(chartTitle);
@@ -110,8 +123,23 @@ class Chart extends React.Component {
         const {chartTitle} = this.props.chart;
         const canvElement = document.getElementById(chartTitle);
         const ctx = canvElement.getContext('2d');
-        ctx.clearRect(0,0, canvElement.width, canvElement.height);
+        ctx.clearRect(0, 0, canvElement.width, canvElement.height);
         this.markUpChart();
+    }
+
+    getRange(value) {
+        const {chart} = this.props;
+        const {chartTitle, x, lines} = chart;
+        const {min, max} = value;
+        let range = [];
+        for (let i = min; i < max; i++){
+            range.push(this.getKeyByValue(x, i));
+        }
+        this.props.changeRange(chartTitle, range, x, lines)
+    }
+
+    getKeyByValue(obj, value) {
+        return Object.keys(obj).find(key => obj[key] === value);
     }
 
     render() {
@@ -122,6 +150,14 @@ class Chart extends React.Component {
                     <canvas id={chartTitle} width='700' height='400'/>
                 </div>
                 {this.placeLineSwitchers()}
+                <InputRange minValue={this.minV} maxValue={this.maxV} draggableTrack={true}
+                            value={this.state.currentValue}
+                            onChange={currentValue => this.setState({currentValue})}
+                            onChangeComplete={value => {
+                                this.getRange(value);
+                                this.redrawChart();
+                            }}
+                            step={7}/>
             </div>
         )
     }
