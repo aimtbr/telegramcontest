@@ -21,7 +21,9 @@ export const chartReducer = (state = initialState, action) => {
             const {charts} = state;
             for (let chart of charts) {
                 if (chart.chartTitle === action.chartTitle) {
-                    chart.rangeToShow  = {...action.payload};
+                    const {rangeToShow, disabled} = action.payload;
+                    chart.rangeToShow  = rangeToShow;
+                    chart.disabled = disabled;
                     return {...state, charts};
                 }
             }

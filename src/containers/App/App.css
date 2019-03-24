@@ -4,6 +4,7 @@
 
 .chart-wrapper {
   text-align: center;
+  margin-bottom: 5rem;
   width: 100%;
 }
 
@@ -11,8 +12,35 @@
   display: inline-block;
 }
 
-#switcher {
+.switchers-wrapper {
+  width: 50%;
+  height: auto;
   text-align: center;
+  margin: auto;
+}
+
+#switcher {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.line-switcher {
+  height: 2rem;
+  width: auto;
+  display: inline-block;
+  position: relative;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  margin: 1rem 15%;
+}
+
+.line-switcher:hover {
+  opacity: 0.7;
+}
+
+canvas {
+  transition: transform 1s ease-out;
 }
 
 #switch-mode {
@@ -27,3 +55,45 @@
 #switch-mode:hover {
   color: #00c6f3;
 }
+
+.input-range__track {
+  border-radius: 0 !important;
+  opacity: 0.3;
+  height: 100% !important;
+}
+
+.input-range__track--active {
+  opacity: 0.3;
+}
+
+.input-range__track--background {
+  margin-top: -2rem !important;
+}
+
+.mini-chart {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.input-range__slider {
+  background: #919191 !important;
+  border-color: #919191 !important;
+  margin-left: -0.1rem !important;
+  margin-top: -4rem !important;
+  border-radius: 0 !important;
+  height: 3.9rem !important;
+  width: 0.3rem !important;
+}
+
+.input-range__slider:active {
+  transform: scale(1.1) !important;
+}
+
+.input-range {
+  margin: 0 auto;
+  height: 4rem !important;
+  width: 43.75rem !important;
+}
+

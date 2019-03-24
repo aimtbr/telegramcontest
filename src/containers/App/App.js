@@ -21,16 +21,19 @@ class App extends Component {
         docBodyStyle.backgroundColor = mode ? '#1d2333' : '#FFF';
     }
 
+    displayCharts(){
+        const {mode, charts} = this.props;
+        return charts.map(chart => <Chart chart={chart} mode={mode} changeRange={this.props.changeRange}
+                                                    switchLine={this.props.switchLine}/>);
+    }
+
     render() {
-        const chart = this.props.charts[0];
-        const {mode} = this.props;
         this.repaintApp();
         return (
             <div className='container-fluid'>
                 <div className='row'>
-                    {chart && <Chart chart={chart} mode={mode} changeRange={this.props.changeRange}
-                                     switchLine={this.props.switchLine}/>}
-                    <ModeButton switchMode={this.props.switchMode} mode={mode}/>
+                    {this.displayCharts()}
+                    <ModeButton switchMode={this.props.switchMode} mode={this.props.mode}/>
                 </div>
             </div>
         );
@@ -47,8 +50,8 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
     return {
         getData: () => getData(dispatch),
-        changeRange: (chartTitle, range, axisX, lines) =>
-            changeRange(dispatch, chartTitle, range, axisX, lines),
+        changeRange: (chartTitle, range, axisX, lines, disabled) =>
+            changeRange(dispatch, chartTitle, range, axisX, lines, disabled),
         switchMode: mode => switchMode(dispatch, mode),
         switchLine: (chartTitle, lineName, rangeToShow, disabled) =>
             switchLine(dispatch, chartTitle, lineName, rangeToShow, disabled),
