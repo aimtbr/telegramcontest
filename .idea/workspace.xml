@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d136d7ea-800e-4931-b2cb-ca9c7bdaa123" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -89,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+            <state relative-caret-position="238">
+              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -307,6 +306,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\GitRepositories\telegramcontest\public" />
+      <recent name="D:\GitRepositories\telegramcontest" />
       <recent name="D:\GitRepositories\telegramcontest\src\containers\App" />
     </key>
   </component>
@@ -348,7 +348,7 @@
       <workItem from="1553075238907" duration="1911000" />
       <workItem from="1553201016179" duration="10281000" />
       <workItem from="1553340593094" duration="13167000" />
-      <workItem from="1553423086945" duration="24241000" />
+      <workItem from="1553423086945" duration="25060000" />
     </task>
     <task id="LOCAL-00001" summary="Mode switcher and line switchers was added">
       <created>1552780549306</created>
@@ -378,11 +378,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553453471314</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Chart builder publishing">
+      <created>1553454664068</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1553454664068</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220532000" />
+    <option name="totallyTimeSpent" value="221351000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -467,7 +474,8 @@
     <MESSAGE value="Line switchers are added" />
     <MESSAGE value="Slider is added" />
     <MESSAGE value="Chart builder v1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chart builder v1" />
+    <MESSAGE value="Chart builder publishing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chart builder publishing" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -633,8 +641,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        <state relative-caret-position="238">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
         </state>
       </provider>
     </entry>
